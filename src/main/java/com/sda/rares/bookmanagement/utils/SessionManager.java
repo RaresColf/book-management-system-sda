@@ -21,7 +21,7 @@ public class SessionManager extends AbstractSessionManager {
     }
 
     public static SessionFactory getSessionFactory(){
-        return INSTANCE.getSessionFactory("book_management_system");   
+        return INSTANCE.getSessionFactory("book_management_system");
     }
 
     public static void shutDown(){
