@@ -6,7 +6,7 @@
 
 -- done -- BMS-16: Add Hibernate model.
 
-BMS-17: Add generic repositories.
+-- done -- BMS-17: Add generic repositories.
 
 BMS-18: Create user menu.
 
