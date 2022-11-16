@@ -14,14 +14,16 @@ public class Review {
     @Column (name = "comment")
     private String comment;
 
+    @ManyToOne
+    @JoinColumn (name = "book_id")
+    private Book book;
+
     public Review(Integer score, String comment) {
         this.score = score;
         this.comment = comment;
     }
 
-    @ManyToOne
-    @JoinColumn (name = "book_id")
-    public Book book;
+
 
     public Review() {
     }
