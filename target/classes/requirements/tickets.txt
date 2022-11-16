@@ -4,7 +4,7 @@
 
 -- done -- BMS-15: Add Hibernate configuration(pom and utils).
 
--- done -- BMS-16: Add Hibernate model.
+BMS-16: Add Hibernate model.
 
 BMS-17: Add generic repositories.
 
