@@ -4,6 +4,8 @@ import com.sda.rares.bookmanagement.utils.SessionManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class BaseRepositoryImpl<T> implements BaseRepository <T> {
@@ -85,5 +87,16 @@ public class BaseRepositoryImpl<T> implements BaseRepository <T> {
             }
         }
 
+    }
+
+    @Override
+    public List<T> findAll() {
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            return session.createQuery("From " + entityClass.getName(),entityClass).list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 }

@@ -15,8 +15,8 @@
          - The system should validate the first name and last name to not be empty or blank
          - The system should generate a new unique identification number
 
-BMS-2: As a user I should be able to view all the authors. Existing authors should be listed on the screen.
-      - Each line should show the author id, fist name and last name
+-- done -- BMS-2: As a user I should be able to view all the authors. Existing authors should be listed on the screen.
+         - Each line should show the author id, fist name and last name
 
 BMS-3: As a user I should be able to update an existing author by providing the id of the author and new values for fist and last name.
       - The system should validate the first name and last name to not be empty or blank.

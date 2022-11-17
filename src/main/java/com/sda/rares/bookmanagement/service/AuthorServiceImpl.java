@@ -5,6 +5,8 @@ import com.sda.rares.bookmanagement.repository.AuthorRepository;
 import com.sda.rares.bookmanagement.service.AuthorService;
 import com.sda.rares.bookmanagement.service.exceptions.InvalidParameterException;
 
+import java.util.List;
+
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
@@ -24,5 +26,10 @@ public class AuthorServiceImpl implements AuthorService {
         }
 
         authorRepository.create(new Author(firstName,lastName));  // am creeat autorul prin new Author prin care am dat parametrii first si last name
+    }
+
+    @Override
+    public List<Author> getAllAuthors() {
+        return authorRepository.findAll();   // returnam din repository metoda findAll
     }
 }

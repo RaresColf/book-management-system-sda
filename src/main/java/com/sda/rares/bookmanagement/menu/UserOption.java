@@ -3,6 +3,7 @@ package com.sda.rares.bookmanagement.menu;
 public enum UserOption {
 
     CREATE_AUTHOR(1,"Create author"),
+    SHOWALLAUTHORS(2,"Display all authors"),
     EXIT(99,"Exit"),
     UNKNOWN(100,"Unknown option");
 

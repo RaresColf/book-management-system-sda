@@ -31,6 +31,9 @@ public class Main {
 //                  System.out.println("Not implemented yet");   // am autorul creeat asa ca renunt la mesajul ca nu e implementat
                     authorController.createAuthor();        // am creeat autorul
                     break;
+                case SHOWALLAUTHORS:
+                    authorController.showAllAuthors();  // am apleat controllerul cu metoda showAll
+                    break;
 
                 case EXIT:
                     System.out.println("Goodbye");
