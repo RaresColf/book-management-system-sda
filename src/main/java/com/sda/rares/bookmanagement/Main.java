@@ -34,6 +34,9 @@ public class Main {
                 case SHOWALLAUTHORS:
                     authorController.showAllAuthors();  // am apleat controllerul cu metoda showAll
                     break;
+                case UPDATEAUTHOR:
+                    authorController.updateAuthor();
+                    break;
 
                 case EXIT:
                     System.out.println("Goodbye");

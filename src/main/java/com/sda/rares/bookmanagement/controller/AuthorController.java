@@ -2,6 +2,7 @@ package com.sda.rares.bookmanagement.controller;
 
 import com.sda.rares.bookmanagement.model.Author;
 import com.sda.rares.bookmanagement.service.AuthorService;
+import com.sda.rares.bookmanagement.service.exceptions.EntityNotFoundException;
 import com.sda.rares.bookmanagement.service.exceptions.InvalidParameterException;
 
 import java.util.Scanner;
@@ -30,6 +31,33 @@ public class AuthorController {
             System.out.println("Internal server error !");
         }
     }
+
+    public void updateAuthor(){
+        try {
+
+        System.out.println("Please enter an author id ");
+        int authorId = Integer.parseInt(scanner.nextLine());
+        System.out.println("Please insert author first name: ");
+        String firstName = scanner.nextLine();
+        System.out.println("Please insert author last name ");
+        String lastName = scanner.nextLine();
+
+        authorService.updateAuthor(authorId, firstName, lastName);
+            System.out.println("Author has been updated");
+        } catch (InvalidParameterException e) {
+            System.out.println(e.getMessage());
+        } catch (EntityNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e){
+            System.out.println(" Provided author id is not a number ");
+        }
+        catch (Exception ex){
+            System.out.println(" Internal server error ! ");
+        }
+
+    }
+
+
 
     public void showAllAuthors(){
         authorService.getAllAuthors().stream().forEach(author ->

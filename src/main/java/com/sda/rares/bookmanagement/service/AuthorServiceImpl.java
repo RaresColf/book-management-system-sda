@@ -3,9 +3,11 @@ package com.sda.rares.bookmanagement.service;
 import com.sda.rares.bookmanagement.model.Author;
 import com.sda.rares.bookmanagement.repository.AuthorRepository;
 import com.sda.rares.bookmanagement.service.AuthorService;
+import com.sda.rares.bookmanagement.service.exceptions.EntityNotFoundException;
 import com.sda.rares.bookmanagement.service.exceptions.InvalidParameterException;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AuthorServiceImpl implements AuthorService {
 
@@ -26,6 +28,32 @@ public class AuthorServiceImpl implements AuthorService {
         }
 
         authorRepository.create(new Author(firstName,lastName));  // am creeat autorul prin new Author prin care am dat parametrii first si last name
+    }
+
+    @Override
+    public void updateAuthor(int authorId, String firstName, String lastName) throws InvalidParameterException, EntityNotFoundException {
+
+        if (authorId < 1 ){
+            throw new InvalidParameterException("Provided value for author id: " + authorId + " is invalid");
+        }
+
+        if (firstName == null || firstName.isBlank() || firstName.length() < 3) {
+            throw new InvalidParameterException("Provided value for first name: " + firstName + " is invalid");
+        }
+
+        if (lastName == null || lastName.isBlank() || lastName.length() < 3) {
+            throw new InvalidParameterException("Provided value for last name: " + lastName + " is invalid");
+        }
+
+        Optional<Author> authorOptional = authorRepository.findById(authorId);
+        if (authorOptional.isEmpty()) {
+            throw new EntityNotFoundException("Author with id " + authorId + "not found");
+        }
+        Author author = authorOptional.get();
+        author.setFirstName(firstName);
+        author.setLastName(lastName);
+
+        authorRepository.update(author);
     }
 
     @Override
