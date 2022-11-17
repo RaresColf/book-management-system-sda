@@ -1,6 +1,9 @@
 package com.sda.rares.bookmanagement;
 
+import com.sda.rares.bookmanagement.controller.AuthorController;
 import com.sda.rares.bookmanagement.menu.UserOption;
+import com.sda.rares.bookmanagement.repository.AuthorRepositoryImpl;
+import com.sda.rares.bookmanagement.service.AuthorServiceImpl;
 import com.sda.rares.bookmanagement.utils.SessionManager;
 
 import java.util.Scanner;
@@ -9,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         SessionManager.getSessionFactory();  // fortam pornirea Hibernate fara a avea un repository
         Scanner scanner = new Scanner(System.in);
+        AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
 
 
         UserOption userOption;
@@ -24,7 +28,8 @@ public class Main {
 
             switch (userOption) {
                 case CREATE_AUTHOR :
-                    System.out.println("Not implemented yet");
+//                  System.out.println("Not implemented yet");   // am autorul creeat asa ca renunt la mesajul ca nu e implementat
+                    authorController.createAuthor();        // am creeat autorul
                     break;
 
                 case EXIT:
