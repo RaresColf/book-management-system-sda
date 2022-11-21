@@ -27,7 +27,7 @@ public class AuthorServiceImpl implements AuthorService {
             throw new InvalidParameterException("Provided value for last name: " + lastName + " is invalid");
         }
 
-        authorRepository.create(new Author(firstName,lastName));  // am creeat autorul prin new Author prin care am dat parametrii first si last name
+        authorRepository.create(new Author(firstName,lastName));  // am creeat autorul prin new Author prin care am dat parametrii first si last name, si am dat cu new deoarece autorul nu a avut nici o relatie
     }
 
     @Override

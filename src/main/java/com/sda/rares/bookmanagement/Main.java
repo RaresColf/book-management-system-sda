@@ -1,9 +1,12 @@
 package com.sda.rares.bookmanagement;
 
 import com.sda.rares.bookmanagement.controller.AuthorController;
+import com.sda.rares.bookmanagement.controller.BookController;
 import com.sda.rares.bookmanagement.menu.UserOption;
 import com.sda.rares.bookmanagement.repository.AuthorRepositoryImpl;
+import com.sda.rares.bookmanagement.repository.BookRepositoryImpl;
 import com.sda.rares.bookmanagement.service.AuthorServiceImpl;
+import com.sda.rares.bookmanagement.service.BookServiceImpl;
 import com.sda.rares.bookmanagement.utils.SessionManager;
 
 import java.util.Scanner;
@@ -13,6 +16,7 @@ public class Main {
         SessionManager.getSessionFactory();  // fortam pornirea Hibernate fara a avea un repository
         Scanner scanner = new Scanner(System.in);
         AuthorController authorController = new AuthorController(new AuthorServiceImpl(new AuthorRepositoryImpl()));
+        BookController bookController = new BookController(new BookServiceImpl(new BookRepositoryImpl(),new AuthorRepositoryImpl()));
 
 
         UserOption userOption;
@@ -39,6 +43,9 @@ public class Main {
                     break;
                 case DELETEAUTHOR:
                     authorController.deleteAuthor();
+                    break;
+                case CREATEBOOK:
+                    bookController.createBook();
                     break;
 
                 case EXIT:
