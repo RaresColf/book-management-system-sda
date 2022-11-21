@@ -37,6 +37,9 @@ public class Main {
                 case UPDATEAUTHOR:
                     authorController.updateAuthor();
                     break;
+                case DELETEAUTHOR:
+                    authorController.deleteAuthor();
+                    break;
 
                 case EXIT:
                     System.out.println("Goodbye");

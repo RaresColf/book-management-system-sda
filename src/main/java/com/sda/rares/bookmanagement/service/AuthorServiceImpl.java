@@ -45,7 +45,7 @@ public class AuthorServiceImpl implements AuthorService {
             throw new InvalidParameterException("Provided value for last name: " + lastName + " is invalid");
         }
 
-        Optional<Author> authorOptional = authorRepository.findById(authorId);
+        Optional<Author> authorOptional = authorRepository.findById(authorId);     // caut in baza de date autorul in functie de authorId sa vad daca exista
         if (authorOptional.isEmpty()) {
             throw new EntityNotFoundException("Author with id " + authorId + "not found");
         }
@@ -54,6 +54,20 @@ public class AuthorServiceImpl implements AuthorService {
         author.setLastName(lastName);
 
         authorRepository.update(author);
+    }
+
+    @Override
+    public void deleteAuthor(int authorId) throws InvalidParameterException, EntityNotFoundException {
+        if (authorId < 1 ){
+            throw new InvalidParameterException("Provided value for author id: " + authorId + " is invalid");
+        }
+        Optional<Author> authorOptional = authorRepository.findById(authorId);     // caut in baza de date autorul in functie de authorId sa vad daca exista
+        if (authorOptional.isEmpty()) {
+            throw new EntityNotFoundException("Author with id " + authorId + "not found");
+        }
+        Author author = authorOptional.get();
+
+        authorRepository.delete(author);
     }
 
     @Override
