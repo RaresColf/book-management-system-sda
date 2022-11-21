@@ -7,6 +7,7 @@ import com.sda.rares.bookmanagement.repository.BookRepository;
 import com.sda.rares.bookmanagement.service.exceptions.EntityNotFoundException;
 import com.sda.rares.bookmanagement.service.exceptions.InvalidParameterException;
 
+import java.util.List;
 import java.util.Optional;
 
 public class BookServiceImpl implements BookService{
@@ -43,5 +44,10 @@ public class BookServiceImpl implements BookService{
         book.setAuthor(author);       // aici se seteaza autorul cartii, se foloseste seterul pentru relatii
 
         bookRepository.create(book);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
