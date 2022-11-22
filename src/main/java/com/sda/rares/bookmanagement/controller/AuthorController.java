@@ -5,6 +5,7 @@ import com.sda.rares.bookmanagement.service.AuthorService;
 import com.sda.rares.bookmanagement.service.exceptions.EntityNotFoundException;
 import com.sda.rares.bookmanagement.service.exceptions.InvalidParameterException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthorController {
@@ -73,6 +74,16 @@ public class AuthorController {
             ;
         } catch (Exception ex) {
             System.out.println(" Internal server error ! ");
+        }
+    }
+
+    public void importAuthors(){
+        try {
+        System.out.println(" Authors import started ");
+            authorService.importAuthors();
+            System.out.println("Authors import finished");
+        } catch (IOException e) {
+            System.out.println(" Internal server error. Import failed! ");
         }
     }
 

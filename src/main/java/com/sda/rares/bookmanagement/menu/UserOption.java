@@ -9,6 +9,8 @@ public enum UserOption {
     CREATEBOOK(5,"Create book"),
     SHOWALLBOOKS(6,"Display all books"),
     CREATE_REVIEW(7,"Create a review"),
+
+    IMPORT_AUTHORS(8,"Import CSV files with authors"),
     EXIT(99,"Exit"),
     UNKNOWN(100,"Unknown option");
 
